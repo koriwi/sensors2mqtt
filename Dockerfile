@@ -1,10 +1,11 @@
 FROM nvidia/cuda:12.3.1-base-ubuntu22.04
 ARG NODE_MAJOR=18
+ARG NVIDIA_DRIVER_VERSION=535
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && apt install -y lm-sensors dmidecode curl nvidia-driver-535-server
+RUN apt update && apt install -y lm-sensors dmidecode curl nvidia-driver-${NVIDIA_DRIVER_VERSION}-server
 
 # install nodejs
 RUN mkdir -p /etc/apt/keyrings
